@@ -1,15 +1,19 @@
 class SessionsController < ApplicationController
 
   def homepage
+    if session[:user_id]
+        @logged_in = true
+    end
     render :layout => 'homepage'
   end
 
   def new
   end
 
+  #login
   def create
     @user = User.find_by(username: params[:username])
-    if @user
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
@@ -18,6 +22,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  #logout
   def destroy
     session.clear
     render :homepage

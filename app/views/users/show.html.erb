@@ -1,3 +1,15 @@
 <h1> User page <h1>
 
 <%= @user.fullname %>
+
+
+<% if @user.has_details %>
+
+
+// print out deets in format
+<% else %>
+
+
+//no deets or partial deets
+
+<% end %>

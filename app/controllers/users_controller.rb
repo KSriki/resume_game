@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :find_user, only: [:show, :edit, :update, :destroy] # Will not work if params do not include [:id]
+  before_action :current_user, only: [:show, :edit, :update, :destroy, :details] # Will not work if params do not include [:id]
+
 
   def index
     @users = User.all
@@ -14,15 +15,19 @@ class UsersController < ApplicationController
   end
 
   def create
-      @user = User.create(user_params())
-      byebug
+      @user = User.new(user_params())
+      # byebug
       if @user.save
           redirect_to user_url(@user)
       else
+          flash[:notice] = "There was an error with your account creation"
           render :new
       end
   end
 
+def details
+
+end
 
 private
 
@@ -30,7 +35,4 @@ private
     params.require(:users).permit(*args) # Should accepts_nested_attributes be included here for all other user info?
   end
 
-  def find_user
-    @user = User.find(params[:id])
-  end
 end
