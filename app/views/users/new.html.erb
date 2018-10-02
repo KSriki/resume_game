@@ -1,0 +1,7 @@
+<h1> New User Form </h1>
+
+
+<%= semantic_form_for @user do |f| %>
+    <%=f.inputs :username, :fullname, :password, :password_confirmation%>
+    <%=f.action :submit %>
+<% end %>
