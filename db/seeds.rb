@@ -33,6 +33,11 @@ inst3 = Institution.create(institution_name: "Salsbury University")
 ind1 = Industry.create(field: "Technology")
 ind2 = Industry.create(field: "Finance")
 ind3 = Industry.create(field: "Food Service")
+ind4 = Industry.create(field: "Retail")
+ind5 = Industry.create(field: "Hospitality")
+ind6 = Industry.create(field: "Construction")
+ind7 = Industry.create(field: "Advertisement")
+ind8 = Industry.create(field: "Education")
 
 
 #User
