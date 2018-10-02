@@ -13,15 +13,16 @@
     <div class="navigation">
       <ul>
         <%# This nav bar should show on every page but the homepage/login page%>
+        <%= @user.fullname if @user %>
         <a href="#">About</a>
         <a href="#">Profile</a>
         <a href="#">Analytics</a>
-        <a href="/logout">Logout</a>
+        <a href="/sessions/logout">Logout</a>
       </ul>
     </div>
     <%= yield %>
   </body>
   <div class="footer">
       <p>resume game? is a proof-of-concept project designed by Srikant Kalaputapu and Trevor Jameson</p>
-    </div> 
+    </div>
 </html>

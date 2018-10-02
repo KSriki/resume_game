@@ -1,2 +1,0 @@
-class InstitutionsController < ApplicationController
-end
