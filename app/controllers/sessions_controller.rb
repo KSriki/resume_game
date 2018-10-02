@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def homepage
-    render :homepage
+    render :layout => 'homepage'
   end
 
   def new
