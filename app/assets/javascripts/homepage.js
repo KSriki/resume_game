@@ -1,4 +1,4 @@
-const input = document.querySelector('input')
+const input = document.querySelector('body')
 
 input.addEventListener('keydown', function(e) {
   if (e.which === 89 || w.which === 121) {

@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # form DSL
 gem "formtastic"
 
+gem 'flexbox-rails'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
