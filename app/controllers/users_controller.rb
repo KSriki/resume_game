@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :current_user, only: [:show, :edit, :update, :destroy, :details] # Will not work if params do not include [:id]
+  before_action :current_user, only: [:show, :edit, :update, :destroy, :resume_form] # Will not work if params do not include [:id]
 
 
   def index
@@ -12,10 +12,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    if @user.educations.empty?
+      redirect_to 'resume_form'
+    end
   end
 
   def create
-      @user = User.new(user_params())
+      @user = User.new(user_params(:password, :password_confirmation, :fullname, :username))
       # byebug
       if @user.save
           redirect_to user_url(@user)
@@ -25,14 +28,27 @@ class UsersController < ApplicationController
       end
   end
 
-def details
+  def edit
 
-end
+  end
+
+  def update
+    # Add update to add peeps
+    byebug
+  end
+
+  def resume_form
+    inst1 = Institution.new(institution_name: "")
+    @user.educations.build(start_date: Date.today, end_date: Date.today, institution: inst1, degree: "")
+    ind1 = Industry.new(field: "")
+    company1 = Company.new(company_name: "", size: "", sector: "", industry: ind1)
+    @user.positions.build(title: "", description: "", start_date: Date.today, end_date: Date.today, company: company1)
+  end
 
 private
 
   def user_params(*args)
-    params.require(:users).permit(*args) # Should accepts_nested_attributes be included here for all other user info?
+    params.require(:user).permit(*args) # Should accepts_nested_attributes be included here for all other user info?
   end
 
 end

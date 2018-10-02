@@ -13,7 +13,7 @@
     <div class="navigation">
       <ul>
         <%# This nav bar should show on every page but the homepage/login page%>
-        <%= if @user %>
+        <% if @user %>
             Welcome <%= @user.fullname %>
             <a href="#">About</a>
             <a href="#">Profile</a>
