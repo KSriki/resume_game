@@ -9,7 +9,6 @@ class Education < ApplicationRecord
 
 
     def institution_name=(name)
-        byebug
         self.institution = Institution.find_or_create_by(institution_name: name)
     end
 

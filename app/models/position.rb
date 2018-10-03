@@ -7,7 +7,6 @@ class Position < ApplicationRecord
   validates :description, length: { minimum: 40 }
 
   def company_attributes=(company_attributes)
-        byebug
         self.company = Company.find_or_create_by(company_attributes)
 
     end

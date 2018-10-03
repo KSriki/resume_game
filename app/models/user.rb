@@ -15,12 +15,16 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, :if => :username
   validates :fullname, format: { with: /\A[\w\s]+\z/, message: "only allows letters" }
 
+  # Updates object and makes associations for the nested data for educations recieved from user params
   def educations_attributes=(educations_attributes)
+
+    # Supposed to delete the association between user and its educations
       self.educations.clear
+
+
       educations_attributes.values.each do |educations_attribute|
 
           educations_attribute = fix_dates(educations_attribute)
-          byebug
           name = educations_attribute[:institution_name]
           inst = Institution.find_or_create_by(institution_name: name)
           educations_attribute.delete(:institution_name)
@@ -33,11 +37,10 @@ class User < ApplicationRecord
 
     def positions_attributes=(positions_attributes)
         positions_attributes.values.each do |positions_attribute|
-
-            positions_attribute = fix_dates(positions_attribute)
-            byebug
-
-
+          byebug
+          positions_attribute = fix_dates(positions_attribute)
+          industry = Industry.find_or_create_by(id: positions_attribute[:company_attributes][:industry])
+          company = Company.find_or_create_by(positions_attribute[:company_attributes]["1"])
           position = Position.find_or_create_by(positions_attribute)
           self.positions << position
         end

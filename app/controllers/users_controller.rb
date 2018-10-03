@@ -34,7 +34,6 @@ class UsersController < ApplicationController
 
   def update
     # Add update to add peeps
-    byebug
 
 
 
@@ -52,7 +51,7 @@ class UsersController < ApplicationController
                 :description,
                 :start_date,
                 :end_date,
-                :company =>
+                :company_attributes =>
                 [
                     :company_name,
                     :sector,
@@ -62,7 +61,6 @@ class UsersController < ApplicationController
             ]
             )
         )
-        byebug
         if @user.save
             redirect_to @user
         else
