@@ -52,7 +52,7 @@ class UsersController < ApplicationController
                 :description,
                 :start_date,
                 :end_date,
-                :company_attributes =>
+                :company =>
                 [
                     :company_name,
                     :sector,
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
     inst1 = Institution.new(institution_name: "")
     @user.educations.build(start_date: Date.today, end_date: Date.today, institution: inst1, degree: "")
     ind1 = Industry.new(field: "")
-    company1 = Company.new(company_name: "", size: "", sector: "", industry: ind1)
+    company1 = Company.new(company_name: "", size: "small", sector: "public", industry: ind1)
     @user.positions.build(title: "", description: "", start_date: Date.today, end_date: Date.today, company: company1)
   end
 

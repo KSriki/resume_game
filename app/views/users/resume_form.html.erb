@@ -34,7 +34,7 @@
       <%= position.text_field :title %><br>
       <%= position.label :description %>
       <%= position.text_area :description %><br>
-      <%= position.fields_for :company_id do |company| %>
+      <%= position.fields_for :company do |company| %>
         <%= company.label :company_name %><br>
         <%= company.text_field :company_name %><br>
         <%= company.label :size %><br>
