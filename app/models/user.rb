@@ -15,33 +15,50 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, :if => :username
   validates :fullname, format: { with: /\A[\w\s]+\z/, message: "only allows letters" }
 
-  def education_attributes=(educations_attributes)
-      educations_attributes.values.each do |education_attribute|
+  def educations_attributes=(educations_attributes)
+      self.educations.clear
+      educations_attributes.values.each do |educations_attribute|
+
+          educations_attribute = fix_dates(educations_attribute)
           byebug
-          date = Date.new education_attribute["start_date(1i)"].to_i, education_attribute["start_date(2i)"].to_i, education_attribute["start_date(3i)"].to_i
-        education = Education.find_or_create_by(education_attribute)
+          name = educations_attribute[:institution_name]
+          inst = Institution.find_or_create_by(institution_name: name)
+          educations_attribute.delete(:institution_name)
+          educations_attribute[:institution_id] = inst.id
+
+         education = Education.find_or_create_by(educations_attribute)
         self.educations << education
       end
     end
 
     def positions_attributes=(positions_attributes)
         positions_attributes.values.each do |positions_attribute|
-            byebug
-            start_date = Date.new positions_attribute["start_date(1i)"].to_i, positions_attribute["start_date(2i)"].to_i, positions_attribute["start_date(3i)"].to_i
-            positions_attribute.delete("start_date(1i)")
-            positions_attribute.delete("start_date(2i)")
-            positions_attribute.delete("start_date(3i)")
-            positions_attribute[:start_date] = start_date
 
-            end_date = Date.new positions_attribute["end_date(1i)"].to_i, positions_attribute["end_date(2i)"].to_i, positions_attribute["end_date(3i)"].to_i
-            positions_attribute.delete("end_date(1i)")
-            positions_attribute.delete("end_date(2i)")
-            positions_attribute.delete("end_date(3i)")
-            positions_attribute[:end_date] = end_date
+            positions_attribute = fix_dates(positions_attribute)
+            byebug
+
+
           position = Position.find_or_create_by(positions_attribute)
           self.positions << position
         end
-      end
+    end
+
+
+    def fix_dates(att)
+        start_date = Date.new att["start_date(1i)"].to_i, att["start_date(2i)"].to_i, att["start_date(3i)"].to_i
+        att.delete("start_date(1i)")
+        att.delete("start_date(2i)")
+        att.delete("start_date(3i)")
+        att[:start_date] = start_date
+
+        end_date = Date.new att["end_date(1i)"].to_i, att["end_date(2i)"].to_i, att["end_date(3i)"].to_i
+        att.delete("end_date(1i)")
+        att.delete("end_date(2i)")
+        att.delete("end_date(3i)")
+        att[:end_date] = end_date
+        return att
+    end
+
 
 
 

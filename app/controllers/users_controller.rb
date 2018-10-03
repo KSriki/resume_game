@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def show
     if @user.educations.empty?
-      redirect_to 'resume_form'
+      redirect_to "/users/#{@user.id}/resume_form"
     end
   end
 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params(:password, :password_confirmation, :fullname, :username))
       # byebug
       if @user.save
-          redirect_to user_url(@user)
+          redirect_to @user
       else
           flash[:notice] = "There was an error with your account creation"
           render :new
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def update
     # Add update to add peeps
-        byebug
+    byebug
 
 
 
@@ -74,11 +74,16 @@ class UsersController < ApplicationController
   end
 
   def resume_form
-    inst1 = Institution.new(institution_name: "")
-    @user.educations.build(start_date: Date.today, end_date: Date.today, institution: inst1, degree: "")
-    ind1 = Industry.new(field: "")
-    company1 = Company.new(company_name: "", size: "small", sector: "public", industry: ind1)
-    @user.positions.build(title: "", description: "", start_date: Date.today, end_date: Date.today, company: company1)
+
+     if !@user.educations.any? && !@user.positions.any?
+        inst1 = Institution.new(institution_name: "")
+        @user.educations.build(start_date: Date.today, end_date: Date.today, institution: inst1, degree: "")
+        ind1 = Industry.new(field: "")
+        company1 = Company.new(company_name: "", size: "", sector: "", industry: ind1)
+        @user.positions.build(title: "", description: "", start_date: Date.today, end_date: Date.today, company: company1)
+    end
+
+
   end
 
 private
