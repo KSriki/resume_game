@@ -1,36 +1,13 @@
-# README
+# resume game
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Resume game is a proof of concept project for formatting resumes in a webpage using standard CSS templates.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
+* Ruby version: 2.3.3
 
 * Database initialization
 
+- Run the console command `rake db:setup` to create the database and populate it with seed data before use. Failure to seed data will result in absent dropdown forms during resume creation `/users/:id/resume_form`
+
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-rails g resource user username:string fullname:string password_digest:string --skip-routes --no-javascripts 
-
-rails g resource education start_date:date end_date:date institution_id:integer --skip-routes --no-javascripts
-
-rails g resource institution name:string --skip-routes --no-javascripts
-
-rails g resource position title:string description:text start_date:date end_date:date user_id:integer company_id:integer --skip-routes --no-javascripts
-
-rails g resource company name:string size:string sector:string --skip-routes --no-javascripts
-
-rails g resource industry field:string --skip-routes --no-javascripts
+- Run the console command `spec _____`

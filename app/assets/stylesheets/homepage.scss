@@ -1,7 +1,18 @@
-// #prompt {
+// * {
 //   font-family: 'Chakra Petch', sans-serif;
-//   font-size: 6em;
+//   font-size: 1em;
 //   color: white;
+// }
+//
+// #prompt {
+//   font-size: 6em;
+// }
+//
+// #scroller {
+//   width: 80%;
+//   position: absolute;
+//   left: 10%;
+//   top: 35%;
 // }
 //
 // .homepage-img {
@@ -10,13 +21,14 @@
 //   background-size: 100%;
 //   background-color: black;
 // }
-// 
 //
 // footer {
 //   font-family: 'Chakra Petch', sans-serif;
 //   font-size: 1.5em;
 //   color: white;
 //   text-align: right;
+//   position: fixed;
+//   bottom: 0;
 // }
 //
 // .typewriter {

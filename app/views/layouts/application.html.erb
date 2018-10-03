@@ -10,18 +10,18 @@
   </head>
 
   <body>
+    <%# This nav bar should show on every page unless the user is not logged in%>
+    <% if @user %>
     <div class="navigation">
       <ul>
-        <%# This nav bar should show on every page but the homepage/login page%>
-        <% if @user %>
             Welcome <%= @user.fullname %>
             <a href="#">About</a>
             <a href="#">Profile</a>
             <a href="#">Analytics</a>
             <a href="/logout">Logout</a>
+          </ul>
+        </div>
         <% end %>
-      </ul>
-    </div>
     <%= yield %>
   </body>
   <footer>

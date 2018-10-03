@@ -10,10 +10,14 @@
 
   <body class="homepage-img">
     <% if @logged_in %>
-        <a href="#">About</a>
-        <a href="#">Profile</a>
-        <a href="#">Analytics</a>
-        <a href="/logout">Logout</a>
+      <div class="navigation">
+        <ul>
+          <a href="#">About</a>
+          <a href="#">Profile</a>
+          <a href="#">Analytics</a>
+          <a href="/logout">Logout</a>
+        </ul>
+      </div>
     <%end%>
     <%= yield %>
   </body>
