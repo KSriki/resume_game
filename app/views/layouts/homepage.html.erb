@@ -26,4 +26,13 @@
           <p>resume game? is a proof-of-concept project designed by Srikant Kalaputapu and Trevor Jameson</p>
       </footer>
    <%end%>
+   <script>
+   const input = document.querySelector('body')
+
+   input.addEventListener('keydown', function(e) {
+     if (e.which === 89 || w.which === 121) {
+       window.location = "/login"
+     }
+   })
+   </script>
 </html>
