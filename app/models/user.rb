@@ -15,7 +15,33 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, :if => :username
   validates :fullname, format: { with: /\A[\w\s]+\z/, message: "only allows letters" }
 
+  def education_attributes=(educations_attributes)
+      educations_attributes.values.each do |education_attribute|
+          byebug
+          date = Date.new education_attribute["start_date(1i)"].to_i, education_attribute["start_date(2i)"].to_i, education_attribute["start_date(3i)"].to_i
+        education = Education.find_or_create_by(education_attribute)
+        self.educations << education
+      end
+    end
 
+    def positions_attributes=(positions_attributes)
+        positions_attributes.values.each do |positions_attribute|
+            byebug
+            start_date = Date.new positions_attribute["start_date(1i)"].to_i, positions_attribute["start_date(2i)"].to_i, positions_attribute["start_date(3i)"].to_i
+            positions_attribute.delete("start_date(1i)")
+            positions_attribute.delete("start_date(2i)")
+            positions_attribute.delete("start_date(3i)")
+            positions_attribute[:start_date] = start_date
+
+            end_date = Date.new positions_attribute["end_date(1i)"].to_i, positions_attribute["end_date(2i)"].to_i, positions_attribute["end_date(3i)"].to_i
+            positions_attribute.delete("end_date(1i)")
+            positions_attribute.delete("end_date(2i)")
+            positions_attribute.delete("end_date(3i)")
+            positions_attribute[:end_date] = end_date
+          position = Position.find_or_create_by(positions_attribute)
+          self.positions << position
+        end
+      end
 
 
 

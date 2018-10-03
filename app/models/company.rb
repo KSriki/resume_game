@@ -8,4 +8,6 @@ class Company < ApplicationRecord
   validates :company_name, format: { with: /\A[\w\s]+\z/, message: "only allows letters" }
   validates :size, inclusion: { in: %w(small medium large)}
   validates :sector, inclusion: { in: %w(public private academic)}
+
+  
 end
