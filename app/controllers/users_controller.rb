@@ -36,31 +36,40 @@ class UsersController < ApplicationController
     # Add update to add peeps
         byebug
 
+
+
     @user.update(user_params(
-        :educations =>
+        :educations_attributes =>
             [
                 :degree,
                 :start_date,
                 :end_date,
                 :institution_name
             ],
-        :positions =>
+        :positions_attributes =>
             [
                 :title,
                 :description,
                 :start_date,
                 :end_date,
-                :company =>
+                :company_attributes =>
                 [
                     :company_name,
+                    :sector,
+                    :size,
                     :industry
                 ]
             ]
             )
         )
         byebug
-
+        if @user.save
             redirect_to @user
+        else
+            render "resume_form"
+        end
+
+
 
   end
 

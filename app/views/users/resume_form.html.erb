@@ -1,4 +1,21 @@
 <h1> Enter your details: </h1>
+
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %>
+      prohibited this resume from being saved:
+    </h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @user do |f| %>
   <%= f.fields_for :educations do |education| %>
       <h2> Education </h2>
@@ -17,9 +34,13 @@
       <%= position.text_field :title %><br>
       <%= position.label :description %>
       <%= position.text_area :description %><br>
-      <%= position.fields_for :company do |company| %>
+      <%= position.fields_for :company_id do |company| %>
         <%= company.label :company_name %><br>
         <%= company.text_field :company_name %><br>
+        <%= company.label :size %><br>
+        <%= company.text_field :size %><br>
+        <%= company.label :sector %><br>
+        <%= company.text_field :sector %><br>
         <%= company.label :industry %>
         <%= company.collection_select :industry, Industry.all, :id, :field %><br>
       <% end %>

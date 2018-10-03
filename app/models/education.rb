@@ -9,7 +9,7 @@ class Education < ApplicationRecord
 
 
     def institution_name=(name)
-        self.institution = Institution.find_or_create_by(name: name)
+        self.institution = Institution.find_or_create_by(institution_name: name)
     end
 
 
