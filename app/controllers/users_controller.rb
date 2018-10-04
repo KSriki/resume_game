@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def create
       @user = User.new(user_params(:password, :password_confirmation, :fullname, :username))
-      # byebug
+      byebug
       if @user.save
           redirect_to @user
       else
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     # Add update to add peeps
 
 
-
+    byebug
     @user.update(user_params(
         :educations_attributes =>
             [
@@ -61,6 +61,7 @@ class UsersController < ApplicationController
             ]
             )
         )
+        byebug
         if @user.save
             redirect_to @user
         else
@@ -73,15 +74,18 @@ class UsersController < ApplicationController
 
   def resume_form
 
-     if !@user.educations.any? && !@user.positions.any?
+      # refractor split into 2 ifs/methods
+     if !@user.educations.any?
         inst1 = Institution.new(institution_name: "")
         @user.educations.build(start_date: Date.today, end_date: Date.today, institution: inst1, degree: "")
-        ind1 = Industry.new(field: "")
-        company1 = Company.new(company_name: "", size: "", sector: "", industry: ind1)
-        @user.positions.build(title: "", description: "", start_date: Date.today, end_date: Date.today, company: company1)
+
     end
 
-
+     if !@user.positions.any?
+         ind1 = Industry.new(field: "")
+         company1 = Company.new(company_name: "", size: "", sector: "", industry: ind1)
+         @user.positions.build(title: "", description: "", start_date: Date.today, end_date: Date.today, company: company1)
+     end
   end
 
 private

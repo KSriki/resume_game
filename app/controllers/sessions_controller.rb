@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
   end
 
   def new
+      if session[:user_id]
+          @logged_in = true
+      end
   end
 
   #login

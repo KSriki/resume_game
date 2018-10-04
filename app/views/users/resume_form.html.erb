@@ -22,7 +22,7 @@
   <%= f.fields_for :educations do |education| %>
       <h2> Education </h2>
       <%= education.label :degree %>
-      <%= education.collection_select :degree, Education.all, :degree, :degree %><br>
+      <%= education.select :degree, Education.degrees %><br>
       <%= education.label :institution_name %>
       <%= education.text_field :institution_name %><br>
       <%= education.label :start_date %>
@@ -30,29 +30,29 @@
       <%= education.label :end_date %>
       <%= education.date_select :end_date %><br>
     <% end %><br>
-    <br>
+    <%= f.fields_for :positions do |position| %>
+      <h2> Previous Positions </h2>
+      <%= position.label :title %>
+      <%= position.text_field :title %><br>
+      <%= position.label :description %>
+      <%= position.text_area :description %><br>
+      <%= position.fields_for :company do |company| %>
+        <%= company.label :company_name %><br>
+        <%= company.text_field :company_name %><br>
+        <%= company.label :size %><br>
+        <%= company.text_field :size %><br>
+        <%= company.label :sector %><br>
+        <%= company.text_field :sector %><br>
+        <%= company.label :industry %>
+        <%= company.collection_select :industry, Industry.all, :id, :field %><br>
+      <% end %>
 
-      <%= f.fields_for :positions do |position| %>
-    <h2> Previous Positions </h2>
-    <%= position.label :title %>
-    <%= position.text_field :title %><br>
-    <%= position.label :description %>
-    <%= position.text_area :description %><br>
-    <%= position.fields_for :company do |company| %>
-      <%= company.label :company_name %><br>
-      <%= company.text_field :company_name %><br>
-      <%= company.label :size %><br>
-      <%= company.text_field :size %><br>
-      <%= company.label :sector %><br>
-      <%= company.text_field :sector %><br>
-      <%= company.label :industry %>
-      <%= company.collection_select :industry, Industry.all, :id, :field %><br>
+        <%= position.label :start_date %>
+        <%= position.date_select :start_date %><br>
+        <%= position.label :end_date %>
+        <%= position.date_select :end_date %><br>
     <% end %>
-    <%= position.label :start_date %>
-    <%= position.date_select :start_date %><br>
-    <%= position.label :end_date %>
-    <%= position.date_select :end_date %><br>
-  <%end%>
+    <br>
 
 
     <%= f.submit 'Create Resume' %>
