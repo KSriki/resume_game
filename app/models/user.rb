@@ -19,31 +19,46 @@ class User < ApplicationRecord
   def educations_attributes=(educations_attributes)
 
     # Supposed to delete the association between user and its educations
-      self.educations.clear
+      # self.educations.clear
 
-
+      updated = []
       educations_attributes.values.each do |educations_attribute|
-
+          byebug
           educations_attribute = fix_dates(educations_attribute)
           name = educations_attribute[:institution_name]
           inst = Institution.find_or_create_by(institution_name: name)
           educations_attribute.delete(:institution_name)
           educations_attribute[:institution_id] = inst.id
+byebug
+educations_attribute[:user_id] = self.id
 
+        # refactor into just find or create
          education = Education.find_or_create_by(educations_attribute)
-        self.educations << education
+         updated << education
+
+
+
       end
+      self.educations.replace(updated)
     end
 
     def positions_attributes=(positions_attributes)
+          updated = []
         positions_attributes.values.each do |positions_attribute|
           byebug
           positions_attribute = fix_dates(positions_attribute)
           industry = Industry.find_or_create_by(id: positions_attribute[:company_attributes][:industry])
-          company = Company.find_or_create_by(positions_attribute[:company_attributes]["1"])
+          positions_attribute[:company_attributes][:industry] = industry
+          byebug
+          company = Company.find_or_create_by(positions_attribute[:company_attributes])
+
+          positions_attribute.delete(:company_attributes)
+          positions_attribute[:company_id] = company.id
+
           position = Position.find_or_create_by(positions_attribute)
-          self.positions << position
+          updated << position
         end
+        self.positions.replace(updated)
     end
 
 

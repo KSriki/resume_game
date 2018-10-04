@@ -17,4 +17,8 @@ class Education < ApplicationRecord
         self.institution ? self.institution.institution_name : nil
     end
 
+    def self.degrees
+        ["highschool", "bachelor", "master", "phd", "bootcamp", "trade"]
+    end
+
 end
