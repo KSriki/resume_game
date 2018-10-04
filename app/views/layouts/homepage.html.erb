@@ -12,9 +12,10 @@
     <% if @logged_in %>
       <div class="navigation">
         <ul>
+          Welcome <%= @user.fullname %>
           <a href="#">About</a>
-          <a href="#">Profile</a>
-          <a href="#">Analytics</a>
+          <a href="/users/<%=@user.id%>">Profile</a>
+          <a href="/analytics">Analytics</a>
           <a href="/logout">Logout</a>
         </ul>
       </div>

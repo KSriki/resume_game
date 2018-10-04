@@ -1,0 +1,29 @@
+<%#byebug%>
+<h1> Aggregate User Data </h1>
+
+<h3>Number of Companies by Size</h3>
+<ul>
+<% @analytics[:company_sizes].each do |size_key, size_value| %>
+  <li>
+      <%= size_key %>: <%= size_value %>
+  </li>
+<% end %>
+</ul>
+
+<h3> Number of Companies by Sector </h3>
+<ul>
+<% @analytics[:company_sectors].each do |sector_key, sector_value| %>
+  <li>
+    <%= sector_key %>: <%= sector_value %>
+  </li>
+<% end  %>
+</ul>
+
+<h3> Number of Sectors Represented </h3>
+<ul>
+<% @analytics[:industry_companies].each do |industry_key, industry_value| %>
+  <li>
+    <%= industry_key %>: <%= industry_value %>
+  </li>
+<% end  %>
+</ul>

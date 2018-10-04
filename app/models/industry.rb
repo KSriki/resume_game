@@ -8,4 +8,17 @@ class Industry < ApplicationRecord
     #     self.field.chomp!
     # end
 
+    def self.count_companies
+      industries = {}
+      Company.all.each do |company|
+        industry_sym = company.industry.field.to_sym
+        if industries[industry_sym] == nil
+          industries[industry_sym] = 1
+        else
+          industries[industry_sym] += 1
+        end
+      end
+      return industries
+    end
+
 end

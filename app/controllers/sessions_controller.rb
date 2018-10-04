@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   def homepage
     if session[:user_id]
         @logged_in = true
+        @user = User.find_by(id: session[:user_id])
     end
     render :layout => 'homepage'
   end
@@ -25,7 +26,7 @@ class SessionsController < ApplicationController
   #logout
   def destroy
     session.clear
-    render :homepage
+    render :logout
   end
 
 end
