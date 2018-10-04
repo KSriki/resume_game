@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   resources :positions, only: [:create, :new, :show]
 
   resources :users
-  resources :sessions
-  resources :analytics
+
   root "sessions#homepage"
+  get "/analytics", to: "analytics#index"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"

@@ -15,6 +15,15 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, :if => :username
   validates :fullname, format: { with: /\A[\w\s]+\z/, message: "only allows letters" }
 
+##### Analytics Methods #####
+  def split_name
+    names_array = self.fullname.split(' ')
+    return {first_name: names_array[0], last_name: names_array[1]}
+  end
+
+
+
+##### Form Methods #####
   # Updates object and makes associations for the nested data for educations recieved from user params
   def educations_attributes=(educations_attributes)
 

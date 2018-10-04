@@ -1,11 +1,3 @@
-.navigation {
-  font-family: 'Chakra Petch', sans-serif;
-  font-size: 1em;
-  color: white;
-  text-decoration: none;
-  background-color: black;
-}
-
 #prompt {
   font-family: 'Chakra Petch', sans-serif;
   font-size: 6em;
@@ -19,20 +11,10 @@
   top: 35%;
 }
 
-.homepage-img {
-  background-image: url("resume-game-homepage.jpg");
+.logout-img {
+  background-image: url("game-over.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
-  background-color: black;
-}
-
-footer {
-  font-family: 'Chakra Petch', sans-serif;
-  font-size: 1.5em;
-  color: white;
-  text-align: right;
-  position: fixed;
-  bottom: 0;
   background-color: black;
 }
 
