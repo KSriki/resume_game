@@ -19,7 +19,6 @@ class UsersController < ApplicationController
 
   def create
       @user = User.new(user_params(:password, :password_confirmation, :fullname, :username))
-      byebug
       if @user.save
           redirect_to @user
       else
@@ -34,9 +33,6 @@ class UsersController < ApplicationController
 
   def update
     # Add update to add peeps
-
-
-    byebug
     @user.update(user_params(
         :educations_attributes =>
             [
@@ -61,7 +57,6 @@ class UsersController < ApplicationController
             ]
             )
         )
-        byebug
         if @user.save
             redirect_to @user
         else
