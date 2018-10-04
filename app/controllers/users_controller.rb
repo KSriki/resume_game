@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     # Add update to add peeps
 
 
-    byebug
+    # byebug
     @user.update(user_params(
         :educations_attributes =>
             [
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
             ]
             )
         )
-        byebug
+        # byebug
         if @user.save
             redirect_to @user
         else

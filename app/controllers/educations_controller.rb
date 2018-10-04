@@ -20,7 +20,7 @@ before_action :current_user
   private
 
   def education_params
-      byebug
+      # byebug
       params.require(:education).permit(:degree,
       :start_date,
       :end_date,
