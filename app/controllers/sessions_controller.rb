@@ -27,9 +27,9 @@ class SessionsController < ApplicationController
   end
 
   #logout
-  def destroy
+  def logout
     session.clear
-    render :logout
+    render :layout => 'logout'
   end
 
 end

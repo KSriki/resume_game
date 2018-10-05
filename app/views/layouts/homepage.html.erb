@@ -31,9 +31,11 @@
    const input = document.querySelector('body')
 
    input.addEventListener('keydown', function(e) {
-     if (e.which === 89 || w.which === 121) {
-       window.location = "/login"
-     }
-   })
+     if (e.which === 89 || e.which === 121) {
+       window.location = "/login";
+     } else if (e.which === 78 || e.which === 110) {
+      window.location = "/logout";
+    }
+     })
    </script>
 </html>

@@ -40,9 +40,9 @@
         <%= company.label :company_name %><br>
         <%= company.text_field :company_name %><br>
         <%= company.label :size %><br>
-        <%= company.text_field :size %><br>
+        <%= company.collection_select :size, Company.all, :size, :size %><br>
         <%= company.label :sector %><br>
-        <%= company.text_field :sector %><br>
+        <%= company.collection_select :sector, Company.all, :sector, :sector %><br>
         <%= company.label :industry %>
         <%= company.collection_select :industry, Industry.all, :id, :field %><br>
       <% end %>
