@@ -9,6 +9,16 @@ class Company < ApplicationRecord
   validates :size, inclusion: { in: %w(small medium large)}
   validates :sector, inclusion: { in: %w(public private academic)}
 
+
+
+  def self.sizes
+      ["small", "medium", "large"]
+  end
+
+  def self.sectors
+      ["public", "private", "academic"]
+  end
+
   ##### Analytics Methods #####
   ##### Company Count Methods #####
 

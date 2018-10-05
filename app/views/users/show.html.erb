@@ -1,3 +1,42 @@
-<h1> Show User Details <h1>
 
-<%= @user.fullname %>
+ <h1>Here is your resume <%=@user.fullname%>!</h1>
+
+<h2> Educations </h2>
+<ol>
+<% if @user.educations.any? %>
+    <% @user.educations.each do |education|  %>
+        <% if education.degree == "highschool" %>
+            <li>Received a diploma from <%= education.institution_name %></li>
+        <% elsif education.degree == "bachelor" || education.degree == "master"%>
+            <li>Received a  <%= education.degree %>'s degree from <%= education.institution_name %></li>
+        <% elsif education.degree == "phd" %>
+            <li>Received a <%= education.degree %> from <%= education.institution_name %></li>
+        <% elsif education.degree == "trade" || education.degree == "bootcamp"%>
+            <li>Completed the <%= education.institution_name %> school </li>
+        <% end %>
+
+        <p>From: <%= education.start_date %></p>
+        <p>To: <%= education.end_date %></p>
+    <% end %>
+<% end %>
+</ol>
+<br />
+<%= link_to "Add New Education", new_education_path %>
+<br />
+<h2> Work History </h1>
+<ol>
+<% if @user.positions.any? %>
+    <% @user.positions.each do |position|  %>
+        <li> Worked as a <%= position.title %> at <%= position.company_name %>
+        <p>From: <%= position.start_date %></p>
+        <p>To: <%= position.end_date %></p>
+    <% end %>
+<% end %>
+</ol>
+<%= link_to "Add New Position", new_position_path %>
+<br />
+<br />
+<%= link_to "Edit Resume", {controller: "users", method: "get", action: "resume_form"} %>
+<br />
+<br />
+Add destroy button here

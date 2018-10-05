@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :educations, only: [:create, :new, :show]
-  resources :positions, only: [:create, :new, :show]
+  resources :educations, only: [:create, :new]
+  resources :positions, only: [:create, :new]
 
   resources :users
 

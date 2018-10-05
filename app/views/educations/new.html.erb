@@ -3,12 +3,13 @@
 <%= form_for @education do |f| %>
     <h2> Education </h2>
     <%= f.label :degree %>
-    <%= f.select :degree, Education.degrees %><br>
-    <%= f.label :institution_name %>
-    <%= f.text_field :institution_name %><br>
-    <%= f.label :start_date %>
-    <%= f.date_select :start_date  %><br>
-    <%= f.label :end_date %>
-    <%= f.date_select :end_date %><br>
-    <%= f.submit "Create new education" %>
-  <% end %><br>
+    <%= f.select :degree, Education.degrees %><br/><br/>
+    <%= f.label :institution_name %><br/>
+    <%= f.text_field :institution_name %><br/><br />
+    <%= f.label :start_date %><br/>
+    <%= f.date_select :start_date  %><br/><br />
+    <%= f.label :end_date %><br/>
+    <%= f.date_select :end_date %><br/><br/>
+    <%= f.submit "Create new education" %><br/><br />
+        <%= link_to "Cancel", @user %>
+  <% end %><br/>

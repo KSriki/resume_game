@@ -1,6 +1,6 @@
 
 
-<h1> Enter your details: </h1>
+<h1> Edit your details: </h1>
 
 
 <% if @user.errors.any? %>
@@ -40,10 +40,11 @@
         <%= company.label :company_name %><br>
         <%= company.text_field :company_name %><br>
         <%= company.label :size %><br>
-        <%= company.collection_select :size, Company.all, :size, :size %><br>
+        <%= company.select :size, Company.sizes %><br>
         <%= company.label :sector %><br>
-        <%= company.collection_select :sector, Company.all, :sector, :sector %><br>
+        <%= company.select :sector, Company.sectors %><br>
         <%= company.label :industry %>
+        <!-- Maybe make a Industry.unique list method here -->
         <%= company.collection_select :industry, Industry.all, :id, :field %><br>
       <% end %>
 
@@ -55,6 +56,6 @@
     <br>
 
 
-    <%= f.submit 'Create Resume' %>
+    <%= f.submit 'Edit Resume' %>
 
 <%end%>
