@@ -13,14 +13,47 @@
  *= require_tree .
  *= require_self
  */
+
+a:link {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1em;
+  color:white
+}
+
+a:visited {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1em;
+  color: orange;
+}
+
+form {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1em;
+  color: white;
+}
+
+header {
+  font-family: 'Chakra Petch', sans-serif;
+  color: white;
+}
+h1 {
+  font-family: 'Chakra Petch', sans-serif;
+  color: white;
+}
+
+form select {
+  background-color: white;
+}
+
  .login-box {
    display: flex;
    justify-content: center;
    order: 1;
-
  }
 
- .navigation {
+ .nav-container {
+   display: flex;
+   justify-content: center;
    font-family: 'Chakra Petch', sans-serif;
    font-size: 1em;
    color: white;
@@ -28,12 +61,34 @@
    background-color: black;
  }
 
+ .nav-menu {
+   display: flex;
+   justify-content: space-around;
+   width: 80%;
+ }
+
+ ul {
+   display: flex;
+   list-style: none;
+ }
+
+ .nav-item {
+   padding: 5%;
+   text-decoration: none;
+ }
+
  footer {
-   font-family: 'Chakra Petch', sans-serif;
-   font-size: 1.5em;
-   color: white;
    text-align: right;
    position: fixed;
    bottom: 0;
+   font-family: 'Chakra Petch', sans-serif;
+   font-size: 1.5em;
+   color: white;
+ }
+
+ body {
+   background-image: url(controller.jpg);
+   background-repeat: no-repeat;
+   background-size: 100%;
    background-color: black;
  }

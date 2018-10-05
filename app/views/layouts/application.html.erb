@@ -12,16 +12,28 @@
   <body>
     <%# This nav bar should show on every page unless the user is not logged in%>
     <% if @user %>
-    <div class="navigation">
-      <ul>
-            Welcome <%= @user.fullname %>
-            <a href="/users/<%=@user.id%>/">About</a>
-            <a href="/users/<%=@user.id%>">Profile</a>
-            <a href="/analytics">Analytics</a>
-            <a href="/logout">Logout</a>
+      <div class="nav-container">
+        <div class="nav-menu">
+          <ul>
+            <li>
+            Profile: <%= @user.fullname.titlecase %>
+            </li>
+              <div class="nav-item">
+                <li><a href="#">About</a></li>
+              </div>
+              <div class="nav-item">
+                <a href="/users/<%=@user.id%>">Profile</a>
+              </div>
+              <div class="nav-item">
+                <a href="/analytics">Analytics</a>
+              </div>
+              <div class="nav-item">
+                <a href="/logout">Logout</a>
+              </div>
           </ul>
         </div>
-        <% end %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
   <footer>
