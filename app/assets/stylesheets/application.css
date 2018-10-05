@@ -26,13 +26,19 @@ a:visited {
   color: orange;
 }
 
+ol {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1em;
+  color: orange;
+}
+
 form {
   font-family: 'Chakra Petch', sans-serif;
   font-size: 1em;
   color: white;
 }
 
-header {
+[header] {
   font-family: 'Chakra Petch', sans-serif;
   color: white;
 }

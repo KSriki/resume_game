@@ -21,36 +21,36 @@
 <%= form_for @user do |f| %>
   <%= f.fields_for :educations do |education| %>
       <h2> Education </h2>
-      <%= education.label :degree %>
+      <%= education.label :degree %>:
       <%= education.select :degree, Education.degrees %><br>
-      <%= education.label :institution_name %>
+      <%= education.label :institution_name %>:
       <%= education.text_field :institution_name %><br>
-      <%= education.label :start_date %>
+      <%= education.label :start_date %>:
       <%= education.date_select :start_date  %><br>
-      <%= education.label :end_date %>
+      <%= education.label :end_date %>:
       <%= education.date_select :end_date %><br>
     <% end %><br>
     <%= f.fields_for :positions do |position| %>
       <h2> Previous Positions </h2>
-      <%= position.label :title %>
+      <%= position.label :title %>:
       <%= position.text_field :title %><br>
-      <%= position.label :description %>
+      <%= position.label :description %>:
       <%= position.text_area :description %><br>
       <%= position.fields_for :company do |company| %>
-        <%= company.label :company_name %><br>
+        <%= company.label :company_name %>: <br>
         <%= company.text_field :company_name %><br>
-        <%= company.label :size %><br>
+        <%= company.label :size %>: <br>
         <%= company.select :size, Company.sizes %><br>
-        <%= company.label :sector %><br>
+        <%= company.label :sector %>: <br>
         <%= company.select :sector, Company.sectors %><br>
-        <%= company.label :industry %>
+        <%= company.label :industry %>:
         <!-- Maybe make a Industry.unique list method here -->
         <%= company.collection_select :industry, Industry.all, :id, :field %><br>
       <% end %>
 
-        <%= position.label :start_date %>
+        <%= position.label :start_date %>:
         <%= position.date_select :start_date %><br>
-        <%= position.label :end_date %>
+        <%= position.label :end_date %>:
         <%= position.date_select :end_date %><br>
     <% end %>
     <br>
