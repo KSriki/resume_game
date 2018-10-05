@@ -11,7 +11,7 @@
 
   <body>
     <%# This nav bar should show on every page unless the user is not logged in%>
-    <% if @user %>
+    <% if @user && @user.fullname %>
       <div class="nav-container">
         <div class="nav-menu">
           <ul>

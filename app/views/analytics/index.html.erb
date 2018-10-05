@@ -1,8 +1,8 @@
-<%#byebug%>
+
 <h1> Aggregate User Data </h1>
 
 <h3>Number of Companies by Size</h3>
-<ul>
+<ul >
 <% @analytics[:company_sizes].each do |size_key, size_value| %>
   <li>
       <%= size_key %>: <%= size_value %>

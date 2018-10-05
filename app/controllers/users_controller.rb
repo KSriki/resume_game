@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    
     @user = User.new # Should #find_or_create_by() be used here instead?
   end
 
