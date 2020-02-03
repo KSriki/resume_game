@@ -12,7 +12,7 @@ Resume game is a proof of concept project for formatting resumes in a webpage us
 
 - Run the console command `spec _____`
 
-# Spec Files to be added
+# User Specs
 
 - Existing user is able to login
 - New user is able to create an account
